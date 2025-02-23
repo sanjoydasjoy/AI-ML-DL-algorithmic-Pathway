@@ -24,4 +24,22 @@ KNN is classified as a lazy learning algorithm because it doesn't have a **train
 This method allows for flexible responses, but it can be **slow** because the analyst has to search through **all the records** **each time a new inquiry** is made.
 
 
+## An Example : 
+
+<img src = "KNN.png">
+
+Let's consider an example of data points where the attributes are two-dimensional, representing fruits. The coordinates (x, y) refer to size and sweetness, respectively. Based on these data points, fruits are classified as Apple (A), Banana (B), and Coconut (C). 
+
+Now, let's set **K = 7** for our K-Nearest Neighbors (KNN) algorithm. We have a new fruit represented by a point, **Pt**. To classify this new fruit, we will analyze its 7 closest neighbors in the dataset.
+
+After identifying the neighbors, suppose we find:
+- 3 are Bananas (B)
+- 2 are Apples (A)
+- 2 are Coconuts (C)
+
+Based on majority voting, the new fruit **Pt** should be classified as a **Banana (B)** since it has the highest count among the neighbors.
+
+Here, before determining what the new fruit is, the algorithm evaluates its 7 nearest neighbors. There is no model or mathematical expression built using the dataset before. The dataset points are simply stored, and when classifying a new data point, the algorithm goes through the stored data to find its 7 (or K) closest points.
+
+
 
