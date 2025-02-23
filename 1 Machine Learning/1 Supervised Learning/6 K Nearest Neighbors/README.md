@@ -185,10 +185,10 @@ Distance(P1, P2) = √(Σ wi * (xi - yi)²) for i = 1 to n
 4. **Define the Model**: Create an instance of the KNN model, specifying the number of neighbors (K). This parameter can significantly impact the model's performance.
 
 5. **Model Training**: The model is fitted to the training dataset using the `.fit()` method. Unlike some algorithms, KNN does not learn a model in the traditional sense; it simply stores the training instances.
-   - **Training time complexity**: O(1)
+   - **Training time complexity**: **O(1)**
 
 7. **Cross-Validation**: To assess the model's performance, cross-validation techniques (like `cross_val_score`) can be employed to evaluate the accuracy across different splits of the dataset.
 
 8. **Prediction**: After training, new data points can be predicted using the `.predict()` method. The model identifies the K closest neighbors in the training data for each new point, determining the output based on majority voting (for classification) or averaging (for regression).
-   - **Prediction time complexity**: O(N * D) , N is number of data points (row) and D (colunms) equals to number of dimentions
+   - **Prediction time complexity**: **(N * D)** , N is number of data points (row) and D (colunms) equals to number of dimentions
 
