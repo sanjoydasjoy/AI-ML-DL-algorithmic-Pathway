@@ -35,7 +35,7 @@ for k in k_values:
     # cv=3: number of folds for cross-validation (the data is split into 3 parts)
     # scoring='neg_mean_squared_error': metric used to evaluate the model's performance (negative mean squared error)
     # mean(): compute the mean of the negative MSE scores and negate to get actual MSE
-    mse_values.append(mse)  # Store the mean squared error for the current k
+    mse_scores.append(mse)  # Store the mean squared error for the current k
 
 
 # Step 6: Fit the model with the best K value on the entire dataset
@@ -151,7 +151,7 @@ for k in k_values:
     # cv=3: number of folds for cross-validation (the data is split into 3 parts)
     # scoring='neg_mean_squared_error': metric used to evaluate the model's performance (negative mean squared error)
     # mean(): compute the mean of the negative MSE scores and negate to get actual MSE
-    mse_values.append(mse)  # Store the mean squared error for the current k
+    mse_scores.append(mse)  # Store the mean squared error for the current k
 
 ```
 
