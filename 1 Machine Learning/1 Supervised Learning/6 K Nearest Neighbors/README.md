@@ -168,5 +168,27 @@ Distance(P1, P2) = max(|xi - yi|) for i = 1 to n
 If weights **w1, w2, ..., wn** are assigned to each dimension, the weighted distance can be calculated as:  
 Distance(P1, P2) = √(Σ wi * (xi - yi)²) for i = 1 to n  
 
+<br>
 
+---
+
+
+
+# Implementation Overview of KNN using Python (scikit-learn)
+
+1. **Import Libraries**: The first step involves importing necessary libraries, including `KNeighborsClassifier` or `KNeighborsRegressor` from `sklearn.neighbors` for classification or regression tasks, respectively. Additional libraries for data handling (like `pandas` and `numpy`) and visualization (like `matplotlib`) are also imported.
+
+2. **Load Data**: The dataset is typically loaded into a DataFrame using `pandas`. This dataset should contain features (independent variables) and labels (dependent variables).
+
+3. **Preprocessing**: Features may require encoding or scaling. For instance, categorical variables can be converted to numerical using techniques like label encoding or one-hot encoding. Feature scaling, such as normalization or standardization, is essential, especially for KNN, as the algorithm relies on distance calculations.
+
+4. **Define the Model**: Create an instance of the KNN model, specifying the number of neighbors (K). This parameter can significantly impact the model's performance.
+
+5. **Model Training**: The model is fitted to the training dataset using the `.fit()` method. Unlike some algorithms, KNN does not learn a model in the traditional sense; it simply stores the training instances.
+   - **Training time complexity**: O(1)
+
+7. **Cross-Validation**: To assess the model's performance, cross-validation techniques (like `cross_val_score`) can be employed to evaluate the accuracy across different splits of the dataset.
+
+8. **Prediction**: After training, new data points can be predicted using the `.predict()` method. The model identifies the K closest neighbors in the training data for each new point, determining the output based on majority voting (for classification) or averaging (for regression).
+   - **Prediction time complexity**: O(N * D) , N is number of data points (row) and D (colunms) equals to number of dimentions
 
