@@ -188,3 +188,22 @@ print(f"Best K: {best_k}, Best Accuracy: {np.max(accuracies)}")  # Print the bes
 The final segment prints the best K value and its corresponding maximum accuracy from the list of accuracies.
 
 This breakdown provides clear explanations of the function parameters and their roles in the code.
+
+
+
+<br>
+
+# Output
+
+## Graph: 
+
+<img src = "Figure_1.png">
+
+## Output:
+```
+BEST K:  3
+New Data Point 1 (Size: 6, Sweetness: 3, Nutrients: 1) - Predicted Fruit: Banana
+New Data Point 2 (Size: 6, Sweetness: 9, Nutrients: 4) - Predicted Fruit: Apple
+New Data Point 3 (Size: 7, Sweetness: 6, Nutrients: 6) - Predicted Fruit: Coconut
+```
+
