@@ -1,3 +1,82 @@
+# Entire Code
+
+```python
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.model_selection import cross_val_score
+from sklearn.preprocessing import LabelEncoder
+
+# Step 1: Load the dataset from the CSV file
+df = pd.read_csv('fruits.csv')  # Read a CSV file into a DataFrame
+
+# Step 2: Prepare the features and labels
+X = df[["Size", "Sweetness", "Nutrients"]]  # Features: selected columns from the DataFrame
+y = df["FruitName"]  # Target variable: fruit names from the DataFrame
+
+# Step 3: Encode the labels into numbers
+label_encoder = LabelEncoder()  # Create a LabelEncoder object to convert labels to numeric form
+y_encoded = label_encoder.fit_transform(y)  # Fit the encoder and transform the labels
+
+# Step 4: Define the range of K values to test
+k_values = range(1, 8)  # Testing K from 1 to 8
+accuracies = []  # List to store accuracy scores for each K
+
+# Step 5: Perform cross-validation for each K
+for k in k_values:
+    knn = KNeighborsClassifier(n_neighbors=k)  # Create KNN classifier with k neighbors
+    # Perform cross-validation with 3 folds and return mean accuracy
+    accuracy = cross_val_score(knn, X, y_encoded, cv=3, scoring='accuracy').mean()  
+    # knn: the model to evaluate
+    # X: input features for the model
+    # y_encoded: target variable (labels) for the model
+    # cv=3: number of folds for cross-validation (the data is split into 3 parts)
+    # scoring='accuracy': metric used to evaluate the model's performance (accuracy)
+    accuracies.append(accuracy)  # Store the mean accuracy for the current k
+
+# Step 6: Fit the model with the best K value on the entire dataset
+print(accuracies)  # Print the accuracy scores for all k values
+
+best_k = k_values[np.argmax(accuracies)]  # Find the k value with the highest accuracy
+print("BEST K: ", best_k)  # Print the best k value
+knn_best = KNeighborsClassifier(n_neighbors=best_k)  # Create KNN classifier with the best k
+knn_best.fit(X, y_encoded)  # Fit the model to the entire dataset
+
+# Step 7: Test the KNN model on new data points
+# Define new data points (example: Size, Sweetness, Nutrients)
+new_data_points = np.array([[6, 3, 1],  # Example values for a new fruit
+                             [6, 9, 4],  # Another fruit
+                             [7, 6, 6]]) # Another fruit
+
+# Predict the fruit names for the new data points
+predicted_indices = knn_best.predict(new_data_points)  # Predict indices of the nearest neighbors
+predicted_fruit_names = label_encoder.inverse_transform(predicted_indices)  # Convert indices back to fruit names
+
+# Print the results
+for i, point in enumerate(new_data_points):
+    print(f"New Data Point {i + 1} (Size: {point[0]}, Sweetness: {point[1]}, Nutrients: {point[2]}) - Predicted Fruit: {predicted_fruit_names[i]}")
+
+# Step 8: Plot the results
+plt.figure(figsize=(10, 6))  # Create a figure with a specified size
+plt.plot(k_values, accuracies, marker='o', linestyle='-', color='b')  # Plot k values against accuracies
+plt.title("Accuracy of KNN for Different K Values")  # Title of the plot
+plt.xlabel("K Value")  # Label for x-axis
+plt.ylabel("Accuracy")  # Label for y-axis
+plt.xticks(k_values)  # Set x-ticks to the k values
+plt.grid(True)  # Enable grid for better readability
+plt.show(block=True)  # Show the plot
+
+# Step 9: Determine the best K and corresponding accuracy
+print(f"Best K: {best_k}, Best Accuracy: {np.max(accuracies)}")  # Print the best k and its corresponding accuracy
+```
+
+<br>
+<br>
+
+
+
+
 ### Segment 1: Importing Libraries
 ```python
 import pandas as pd
