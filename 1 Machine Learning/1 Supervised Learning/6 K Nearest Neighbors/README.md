@@ -119,6 +119,7 @@ Since **Fit (1) is the majority**, **Person X (65, 168) is classified as Fit (1)
 The new person with **Weight = 65 kg and Height = 168 cm** is classified as **Fit (1).**
 
 <br>
+
 ---
 
 ## Common distances used in KNN : 
