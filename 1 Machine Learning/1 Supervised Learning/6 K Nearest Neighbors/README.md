@@ -41,5 +41,131 @@ Based on majority voting, the new fruit **Pt** should be classified as a **Banan
 
 Here, before determining what the new fruit is, the algorithm evaluates its 7 nearest neighbors. There is no model or mathematical expression built using the dataset before. The dataset points are simply stored, and when classifying a new data point, the algorithm goes through the stored data to find its 7 (or K) closest points.
 
+<br>
+
+## A Tabular Example :
+
+### **Step 1: mall Dataset**
+We have a dataset where we classify a person as **Fit (1)** or **Unfit (0)** based on their **Weight (kg)** and **Height (cm)**.
+
+| Person | Weight (kg) | Height (cm) | Class (Fit=1, Unfit=0) |
+|--------|------------|------------|----------------|
+| A      | 55         | 160        | 1 (Fit)       |
+| B      | 70         | 170        | 0 (Unfit)     |
+| C      | 60         | 165        | 1 (Fit)       |
+| D      | 90         | 175        | 0 (Unfit)     |
+| E      | 80         | 180        | 0 (Unfit)     |
+
+Now, we have a **new person (X) with Weight = 65 kg and Height = 168 cm**, and we want to classify whether they are **Fit (1) or Unfit (0)** using **KNN with K = 3**.
+
+
+### **Step 2: Calculate Distance (Euclidean)**
+The Euclidean distance formula between two points (x1, y1) and (x2, y2) is:  
+Distance = sqrt((x2 - x1)² + (y2 - y1)²)
+
+Let's calculate the distance of Person X (65, 168) from all other points.
+
+1. Distance from **A (55, 160)**  
+   = sqrt((65 - 55)² + (168 - 160)²)  
+   = sqrt(10² + 8²)  
+   = sqrt(100 + 64)  
+   = **12.81**
+   
+2. Distance from **B (70, 170)**  
+   = sqrt((65 - 70)² + (168 - 170)²)  
+   = sqrt((-5)² + (-2)²)  
+   = sqrt(25 + 4)  
+   = **5.39**
+   
+3. Distance from **C (60, 165)**  
+   = sqrt((65 - 60)² + (168 - 165)²)  
+   = sqrt(5² + 3²)  
+   = sqrt(25 + 9)  
+   = **5.83**
+   
+4. Distance from **D (90, 175)**  
+   = sqrt((65 - 90)² + (168 - 175)²)  
+   = sqrt((-25)² + (-7)²)  
+   = sqrt(625 + 49)  
+   = **25.96**
+   
+5. Distance from **E (80, 180)**  
+   = sqrt((65 - 80)² + (168 - 180)²)  
+   = sqrt((-15)² + (-12)²)  
+   = sqrt(225 + 144)  
+   = **19.21**
+
+
+### **Step 3: Find the 3 Nearest Neighbors (K = 3)**
+The **three closest neighbors** to **Person X (65, 168)** are:
+
+| Person | Distance | Class |
+|--------|----------|-------|
+| B (70, 170) | 5.39  | 0 (Unfit) |
+| C (60, 165) | 5.83  | 1 (Fit)   |
+| A (55, 160) | 12.81 | 1 (Fit)   |
+
+
+
+### **Step 4: Majority Voting**
+Among the **3 nearest neighbors**, we have:
+- **Fit (1) → 2 votes** (A and C)
+- **Unfit (0) → 1 vote** (B)
+
+Since **Fit (1) is the majority**, **Person X (65, 168) is classified as Fit (1).**
+
+
+### **Final Result:**
+The new person with **Weight = 65 kg and Height = 168 cm** is classified as **Fit (1).**
+
+<br>
+---
+
+## Common distances used in KNN : 
+
+1. **Euclidean Distance**:  (Most common)
+For two points **P1 (x1, y1)** and **P2 (x2, y2)** in a two-dimensional space, the Euclidean distance is given by:  
+Distance(P1, P2) = √((x2 - x1)² + (y2 - y1)²)  
+
+In general, for two points in n-dimensional space, the formula is:  
+Distance(P1, P2) = √(Σ (xi - yi)²) for i = 1 to n
+
+2. **Manhattan Distance**:  
+For two points **P1 (x1, y1)** and **P2 (x2, y2)**, the Manhattan distance is given by:  
+Distance(P1, P2) = |x2 - x1| + |y2 - y1|  
+
+In n-dimensional space, it is:  
+Distance(P1, P2) = Σ |xi - yi| for i = 1 to n
+
+3. **Minkowski Distance**:  
+For two points **P1 (x1, y1)** and **P2 (x2, y2)**, the Minkowski distance is defined as:  
+Distance(P1, P2) = (Σ |xi - yi|^p)^(1/p) for i = 1 to n  
+
+Where **p** is a parameter:
+- If **p = 1**, it becomes the Manhattan distance.
+- If **p = 2**, it becomes the Euclidean distance.
+
+4. **Cosine Similarity**:  
+For two non-zero vectors **A** and **B**, the cosine similarity is calculated as:  
+cosine_similarity(A, B) = (A • B) / (||A|| ||B||)  
+
+The distance derived from cosine similarity is:  
+Distance(A, B) = 1 - cosine_similarity(A, B)
+
+5. **Hamming Distance**:  
+For two strings or binary vectors of equal length, the Hamming distance is the number of positions at which the corresponding elements are different:  
+Distance(P1, P2) = Σ (xi ≠ yi) for i = 1 to n  
+
+6. **Chebyshev Distance**:  
+For two points **P1 (x1, y1)** and **P2 (x2, y2)**, the Chebyshev distance is given by:  
+Distance(P1, P2) = max(|x2 - x1|, |y2 - y1|)  
+
+In n-dimensional space, it is:  
+Distance(P1, P2) = max(|xi - yi|) for i = 1 to n
+
+7. **Weighted Distances**:  
+If weights **w1, w2, ..., wn** are assigned to each dimension, the weighted distance can be calculated as:  
+Distance(P1, P2) = √(Σ wi * (xi - yi)²) for i = 1 to n  
+
 
 
