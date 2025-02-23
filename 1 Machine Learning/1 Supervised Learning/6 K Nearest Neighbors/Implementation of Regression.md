@@ -29,7 +29,14 @@ mse_scores = []  # List to store mean squared error scores for each K
 for k in k_values:
     knn = KNeighborsRegressor(n_neighbors=k)  # Create KNN regressor with k neighbors
     mse = -cross_val_score(knn, X_scaled, y, cv=3, scoring='neg_mean_squared_error').mean()  
-    mse_scores.append(mse)  # Store the mean squared error for the current k
+    # knn: the KNeighborsRegressor instance to evaluate
+    # X_scaled: scaled feature set (Size, Sweetness, Nutrients) for the model
+    # y: target variable (fruit prices) for the model
+    # cv=3: number of folds for cross-validation (the data is split into 3 parts)
+    # scoring='neg_mean_squared_error': metric used to evaluate the model's performance (negative mean squared error)
+    # mean(): compute the mean of the negative MSE scores and negate to get actual MSE
+    mse_values.append(mse)  # Store the mean squared error for the current k
+
 
 # Step 6: Fit the model with the best K value on the entire dataset
 print(mse_scores)  # Print the mean squared error scores for all k values
@@ -138,7 +145,14 @@ mse_scores = []  # List to store mean squared error scores for each K
 for k in k_values:
     knn = KNeighborsRegressor(n_neighbors=k)  # Create KNN regressor with k neighbors
     mse = -cross_val_score(knn, X_scaled, y, cv=3, scoring='neg_mean_squared_error').mean()  
-    mse_scores.append(mse)  # Store the mean squared error for the current k
+    # knn: the KNeighborsRegressor instance to evaluate
+    # X_scaled: scaled feature set (Size, Sweetness, Nutrients) for the model
+    # y: target variable (fruit prices) for the model
+    # cv=3: number of folds for cross-validation (the data is split into 3 parts)
+    # scoring='neg_mean_squared_error': metric used to evaluate the model's performance (negative mean squared error)
+    # mean(): compute the mean of the negative MSE scores and negate to get actual MSE
+    mse_values.append(mse)  # Store the mean squared error for the current k
+
 ```
 
 In this segment, for each K value, the KNN regressor is created. The cross_val_score function performs cross-validation to evaluate the model by computing the mean squared error for each K value.
