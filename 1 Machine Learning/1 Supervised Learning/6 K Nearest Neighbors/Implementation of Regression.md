@@ -223,6 +223,7 @@ The final segment prints the best K value and its corresponding minimum mean squ
 ## OUTPUT
 
 ```
+BEST K:  4
 New Data Point 1 (Size: 6, Sweetness: 3, Nutrients: 1) - Predicted Price: 1.825
 New Data Point 2 (Size: 6, Sweetness: 9, Nutrients: 4) - Predicted Price: 2.2
 New Data Point 3 (Size: 7, Sweetness: 6, Nutrients: 6) - Predicted Price: 2.55
