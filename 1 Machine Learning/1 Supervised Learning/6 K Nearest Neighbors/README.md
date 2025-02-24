@@ -11,6 +11,8 @@ KNN is considered non-parametric because it makes no assumptions about the under
 <br>
 Instead, it directly uses the data points to make decisions based on their relationships.
 
+Parametric nature: Mean, median, mode. They depends on data distributions.  Also, linear regression. it is also parametric.
+
 ## Classification Problems
 KNN is **mainly** used for **classification** problems. For example, in a handwritten digit recognition task, each digit (0-9) can be represented as an image. When a new digit image is inputted, KNN looks at the k nearest digit images in the training set. If, for instance, (k = 5) the closest **five images** consist of three '7's and two '9's, the algorithm assigns the label '7' to the new image based on majority voting.
 
