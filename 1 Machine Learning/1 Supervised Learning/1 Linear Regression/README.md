@@ -1,4 +1,5 @@
 **[Derivation](#derivation)**
+
 ---
 
 ### What is Linear Regression?
@@ -110,9 +111,9 @@ print(model.predict([[5]]))  # Output: [90.]
 ---
 
 
-### Derivation
+### <a id="derivation"></a>Derivation
 
-#### Linear regression is a fundamental statistical method used to model the relationship between a dependent variable $ y $ and one or more independent variables $ x $. In simple linear regression, we aim to find the best-fitting straight line that minimizes the error between the observed data points and the predicted values. The equation of the line is given by:
+#### Linear regression is a fundamental statistical method used to model the relationship between a dependent variable y and one or more independent variables x. In simple linear regression, we aim to find the best-fitting straight line that minimizes the error between the observed data points and the predicted values. The equation of the line is given by:
 
 $$
 y = \beta_0 + \beta_1 x
@@ -128,7 +129,7 @@ The goal is to derive the values of β0 and β1 that minimize the sum of squared
 
 ---
 
-### Step 1: Define the Sum of Squared Errors (SSE)
+### The Sum of Squared Errors (SSE)
 The error for a single data point is the difference between the observed value yi and the predicted value ȳi = β0 + β1xi. The total error is minimized by minimizing the sum of squared errors:
 
 
@@ -140,7 +141,7 @@ $$
 
 ---
 
-### Step 2: Minimize SSE with Respect to β0 and β1
+### Minimize SSE with Respect to β0 and β1
 To find the values of β0 and β1 that minimize SSE, we take partial derivatives of SSE with respect to β0 and β1, set them to zero, and solve for β0 and β1.
 
 #### Partial Derivative with Respect to β0 :
@@ -153,17 +154,17 @@ $$
 \frac{\partial SSE}{\partial \beta_0} = \sum_{i=1}^n 2 \left( y_i - (\beta_0 + \beta_1 x_i) \right)(-1)
 $$
 
-#### Simplify:
+#### Simplifying:
 $$
 \frac{\partial SSE}{\partial \beta_0} = -2 \sum_{i=1}^n \left( y_i - \beta_0 - \beta_1 x_i \right)
 $$
 
-#### Set ∂SSE/∂β0 = 0:
+#### Setting ∂SSE/∂β0 = 0:
 $$
 \sum_{i=1}^n \left( y_i - \beta_0 - \beta_1 x_i \right) = 0
 $$
 
-#### Rearrange:
+#### Rearranging:
 $$
 \sum_{i=1}^n y_i = n \beta_0 + \beta_1 \sum_{i=1}^n x_i
 $$
@@ -190,7 +191,7 @@ $$
 \frac{\partial SSE}{\partial \beta_1} = \sum_{i=1}^n 2 \left( y_i - (\beta_0 + \beta_1 x_i) \right)(-x_i)
 $$
 
-#### Simplify:
+#### Simplifying:
 $$
 \frac{\partial SSE}{\partial \beta_1} = -2 \sum_{i=1}^n x_i \left( y_i - \beta_0 - \beta_1 x_i \right)
 $$
@@ -205,7 +206,7 @@ $$
 \sum_{i=1}^n x_i \left( y_i - (\bar{y} - \beta_1 \bar{x}) - \beta_1 x_i \right) = 0
 $$
 
-#### Simplify:
+#### Simplifying:
 $$
 \sum_{i=1}^n x_i \left( y_i - \bar{y} + \beta_1 \bar{x} - \beta_1 x_i \right) = 0
 $$
@@ -227,7 +228,7 @@ $$
 
 ---
 
-### Step 3: Simplify the Expressions
+### Simplifying the Expressions
 We can rewrite the numerator and denominator in terms of covariance and variance:
 - #### Covariance:
 $$ \text{Cov}(x, y) = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}) $$
