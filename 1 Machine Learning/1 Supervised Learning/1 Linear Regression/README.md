@@ -31,6 +31,8 @@ Where:
 - $m$ = Slope of the line (how steep the line is)
 - $c$ = Intercept (where the line crosses the Y-axis)
 
+  <img src="/fig1.png"  width="500">
+
 ---
 
 ### How Does It Work?
@@ -257,4 +259,8 @@ $$
 $$
 
 These are the formulas for the slope β1 and intercept β0 of the best-fit line in simple linear regression.
+
+- The working formula for linear regression
+
+<img src="/fig2.png"  width="500">
 
