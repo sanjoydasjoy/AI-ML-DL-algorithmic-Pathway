@@ -1,4 +1,4 @@
-
+**[Derivation](#derivation)**
 ---
 
 ### What is Linear Regression?
@@ -109,4 +109,151 @@ print(model.predict([[5]]))  # Output: [90.]
 
 ---
 
+
+### Derivation
+
+#### Linear regression is a fundamental statistical method used to model the relationship between a dependent variable $ y $ and one or more independent variables $ x $. In simple linear regression, we aim to find the best-fitting straight line that minimizes the error between the observed data points and the predicted values. The equation of the line is given by:
+
+$$
+y = \beta_0 + \beta_1 x
+$$
+
+where:
+- y: Dependent variable (response)
+- y: Independent variable (predictor)
+- β0: Intercept (value of y when x = 0)
+- β1: Slope (rate of change of y with respect to x)
+
+The goal is to derive the values of β0 and β1 that minimize the sum of squared errors (SSE). Let’s go through the derivation step by step.
+
+---
+
+### Step 1: Define the Sum of Squared Errors (SSE)
+The error for a single data point is the difference between the observed value yi and the predicted value ȳi = β0 + β1xi. The total error is minimized by minimizing the sum of squared errors:
+
+
+#### The Sum of Squared Errors (SSE) is defined as:
+
+$$
+SSE = \sum_{i=1}^n \left( y_i - (\beta_0 + \beta_1 x_i) \right)^2
+$$
+
+---
+
+### Step 2: Minimize SSE with Respect to β0 and β1
+To find the values of β0 and β1 that minimize SSE, we take partial derivatives of SSE with respect to β0 and β1, set them to zero, and solve for β0 and β1.
+
+#### Partial Derivative with Respect to β0 :
+$$
+\frac{\partial SSE}{\partial \beta_0} = \frac{\partial}{\partial \beta_0} \sum_{i=1}^n \left( y_i - (\beta_0 + \beta_1 x_i) \right)^2
+$$
+
+#### Using the chain rule:
+$$
+\frac{\partial SSE}{\partial \beta_0} = \sum_{i=1}^n 2 \left( y_i - (\beta_0 + \beta_1 x_i) \right)(-1)
+$$
+
+#### Simplify:
+$$
+\frac{\partial SSE}{\partial \beta_0} = -2 \sum_{i=1}^n \left( y_i - \beta_0 - \beta_1 x_i \right)
+$$
+
+#### Set ∂SSE/∂β0 = 0:
+$$
+\sum_{i=1}^n \left( y_i - \beta_0 - \beta_1 x_i \right) = 0
+$$
+
+#### Rearrange:
+$$
+\sum_{i=1}^n y_i = n \beta_0 + \beta_1 \sum_{i=1}^n x_i
+$$
+
+#### Divide through by n:
+$$
+\bar{y} = \beta_0 + \beta_1 \bar{x}
+$$
+
+#### This gives us the first equation:
+$$
+\beta_0 = \bar{y} - \beta_1 \bar{x}
+$$
+
+---
+
+#### Partial Derivative with Respect to  β1 :
+$$
+\frac{\partial SSE}{\partial \beta_1} = \frac{\partial}{\partial \beta_1} \sum_{i=1}^n \left( y_i - (\beta_0 + \beta_1 x_i) \right)^2
+$$
+
+#### Using the chain rule: 
+$$
+\frac{\partial SSE}{\partial \beta_1} = \sum_{i=1}^n 2 \left( y_i - (\beta_0 + \beta_1 x_i) \right)(-x_i)
+$$
+
+#### Simplify:
+$$
+\frac{\partial SSE}{\partial \beta_1} = -2 \sum_{i=1}^n x_i \left( y_i - \beta_0 - \beta_1 x_i \right)
+$$
+
+#### Set ∂SSE/∂β1 = 0 :
+$$
+\sum_{i=1}^n x_i \left( y_i - \beta_0 - \beta_1 x_i \right) = 0
+$$
+
+#### Substitute β0 = ȳ - β1x into the equation:
+$$
+\sum_{i=1}^n x_i \left( y_i - (\bar{y} - \beta_1 \bar{x}) - \beta_1 x_i \right) = 0
+$$
+
+#### Simplify:
+$$
+\sum_{i=1}^n x_i \left( y_i - \bar{y} + \beta_1 \bar{x} - \beta_1 x_i \right) = 0
+$$
+
+#### Distribute x1:
+$$
+\sum_{i=1}^n x_i (y_i - \bar{y}) + \beta_1 \sum_{i=1}^n x_i (\bar{x} - x_i) = 0
+$$
+
+#### Split terms:
+$$
+\sum_{i=1}^n x_i (y_i - \bar{y}) = \beta_1 \sum_{i=1}^n x_i (x_i - \bar{x})
+$$
+
+#### Solve for β1:
+$$
+\beta_1 = \frac{\sum_{i=1}^n x_i (y_i - \bar{y})}{\sum_{i=1}^n x_i (x_i - \bar{x})}
+$$
+
+---
+
+### Step 3: Simplify the Expressions
+We can rewrite the numerator and denominator in terms of covariance and variance:
+- #### Covariance:
+$$ \text{Cov}(x, y) = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y}) $$
+- #### Variance:
+$$ \text{Var}(x) = \frac{1}{n} \sum_{i=1}^n (x_i - \bar{x})^2 $$
+
+#### Thus:
+$$
+\beta_1 = \frac{\text{Cov}(x, y)}{\text{Var}(x)}
+$$
+
+#### And from earlier:
+$$
+\beta_0 = \bar{y} - \beta_1 \bar{x}
+$$
+
+---
+
+### Final Result
+#### The linear regression coefficients are:
+$$
+\boxed{\beta_1 = \frac{\sum_{i=1}^n (x_i - \bar{x})(y_i - \bar{y})}{\sum_{i=1}^n (x_i - \bar{x})^2}}
+$$
+$$
+\boxed{\beta_0 = \bar{y} - \beta_1 \bar{x}}
+$$
+
+These are the formulas for the slope β1 and intercept β0 of the best-fit line in simple linear regression.
 
